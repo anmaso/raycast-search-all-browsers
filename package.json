@@ -1,0 +1,45 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "allbrowserstabs",
+  "title": "AllBrowsersTabs",
+  "description": "",
+  "icon": "command-icon.png",
+  "author": "anmaso",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "search-all-browsers",
+      "title": "Search AllBrowsersTabs",
+      "description": "Template with a plain detail view",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.29.1",
+    "run-applescript": "^6.0.0",
+    "sql.js": "^1.6.2",
+    "execa": "^5.1.1",
+    "lodash": "^4.17.21",
+    "osascript-tag": "^0.1.2",
+    "simple-plist": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.176",
+    "@types/node": "~16.10.0",
+    "@types/react": "^17.0.28",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "@types/sql.js": "^1.4.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "react-devtools": "^4.19.2",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint"
+  }
+}
