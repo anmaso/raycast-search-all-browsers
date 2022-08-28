@@ -47,7 +47,7 @@ const fetchLocalTabs = (): Promise<LocalTab[]> =>
     const safari = Application("${safariAppIdentifier}");
     const tabs = [];
     safari.windows().map(window => {
-      return window.tabs().map(tab => {
+      return (window.tabs()||[]).map(tab => {
         tabs.push({
           uuid: window.id() + '-' + tab.index(),
           title: tab.name(),

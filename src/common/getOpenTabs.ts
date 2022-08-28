@@ -45,7 +45,7 @@ import { search } from "../utils";
         end tell
         return _output
     `);
-const getSafariTabs = async ()=> (await useDevices()).localTabs.map(d=> new Tab(
+const getSafariTabs = async ()=> ((await useDevices()).localTabs||[]).map(d=> new Tab(
       d.title, d.url, '', d.window_id, d.index, 'Safari'
   ))
 

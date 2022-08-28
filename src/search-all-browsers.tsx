@@ -27,14 +27,14 @@ export default function Command() {
       } catch (error) {
         isEdgeInstalled = await checkIfBrowserIsInstalled();
         setState({ tabs: [], error: !isEdgeInstalled });
+        console.log("step2", error)
         showToast(
           ToastStyle.Failure,
           DEFAULT_ERROR_TITLE,
-          isEdgeInstalled ? "Failed to show open tabs" : EDGE_NOT_INSTALLED_MESSAGE
+          isEdgeInstalled ? "Failed to show open tabs\n"+error : EDGE_NOT_INSTALLED_MESSAGE
         );
       }
     }
-
     getTabs();
   }, []);
 
