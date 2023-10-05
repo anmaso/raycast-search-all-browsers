@@ -17,26 +17,37 @@ import {
 export function TabListItem(props: { tab: Tab; useOriginalFavicon: boolean }) {
   const p = props || {tab:{}};
   const subtitle = p && p.tab && p.tab.urlWithoutScheme? p.tab.urlWithoutScheme() : ""
-  const urlDomain = p && p.tab && p.tab.urlDomain? p.tab.urlDomain() : ""
+  let urlDomain = ""
+  let favicon= null
+  try{
+  urlDomain = p && p.tab && p.tab.urlDomain? p.tab.urlDomain() : ""
+  if (urlDomain.length<10) urlDomain='https://www.google.com?q='+urlDomain
+  favicon = props.useOriginalFavicon ? p.tab.favicon : p.tab.googleFavicon()
+  }catch(e){
+  }
+
+
  
   return (
     <List.Item
       title={p.tab.app + '/' + p.tab.title}
       subtitle={subtitle}
-      keywords={urlDomain}
+      keywords={[urlDomain]}
       actions={<UrlListItemActions tab={p.tab} />}
-      icon={props.useOriginalFavicon ? p.tab.favicon : p.tab.googleFavicon()}
+      icon={favicon}
     />
   );
+/*
   return (
     <List.Item
       title={props.tab.app + '/' + props.tab.title}
       subtitle={props.tab.urlWithoutScheme()}
       keywords={[props.tab.urlDomain()]}
       actions={<UrlListItemActions tab={props.tab} />}
-      icon={props.useOriginalFavicon ? props.tab.favicon : props.tab.googleFavicon()}
+      icon={favicon}
     />
   );
+*/
 }
 
 async function setActiveTab(tab: Tab): Promise<void> {
